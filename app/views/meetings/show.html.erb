@@ -1,0 +1,29 @@
+<h3><%= @meeting.title + " - " + @meeting.date_for.to_formatted_s(:long_ordinal) %> </h3>
+
+<p><%= @meeting.description %> </p>
+<p>Attendance: <%= @meeting.users.count %></p>
+<p>Meeting is active: <%= @meeting.active %></p>
+
+<% if user_signed_in? and @already_signed_in == false and @meeting.active == true%>
+	<%= form_for(@relationship) do |f| %>
+		<div class="field">
+				<%= f.hidden_field :meeting_id, :value => @meeting.id %>	
+	    Password: <input type="text" name="meeting_password">
+	  </div>
+
+		<div class="actions">
+	    <%= f.submit "Sign up" %>
+	  </div>
+	<% end %>
+<% end %>
+
+<% if admin? %>
+	<h3>Admin tools:</h3>
+	<% if @meeting.active == true %>
+		<% path = '/meetings/' + @meeting.id.to_s + '/deactivate' %>
+		<%= link_to "Deactivate meeting" , path, method: :post %>
+	<% else %>
+		<% path = '/meetings/' + @meeting.id.to_s + '/activate' %>
+		<%= link_to "Activate meeting" , path , method: :post %>
+	<% end %>
+<% end %>
