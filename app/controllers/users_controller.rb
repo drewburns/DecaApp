@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
 	def stats
 		@user = User.find(params[:id])
+		redirect_to root_url unless current_user == @user or current_user.admin == true
 		@meetings_hash = get_attendance(@user)
 		@meetings_hash.first
 	end

@@ -25,25 +25,32 @@
 
 	<h3 class="center-text" >People at this meeting:</h3>
 	<div class="center-text">
+	<ul>
 <% @meeting.users.each do |user| %>
-	<%= link_to user.name , user_path(user)%>
+	<li><%= link_to user.name , user_path(user)%>
 	<% if admin? %>
 	<% relationship = find_relationship(user.id,@meeting.id) %>
 		- <%= link_to 'Was not there', relationship,  method: :delete, data: { confirm: 'Are you sure?' } %>
+	</li>
 	<% end %>
+	</ul>
 <% end %>
 	</div>
 
 <% if admin? %>
 	<h3 class="center-text">Admin tools:</h3>
 	<div class="center-text">
+		<ul>
 		<% if @meeting.active == true %>
 			<% path = '/meetings/' + @meeting.id.to_s + '/deactivate' %>
-			<%= link_to "Deactivate meeting" , path, method: :post %>
+			<li class='admin-tool'><%= link_to "Deactivate meeting" , path, method: :post, :class => "button small radius" %></li>
 		<% else %>
 			<% path = '/meetings/' + @meeting.id.to_s + '/activate' %>
-			<%= link_to "Activate meeting" , path , method: :post %>
+			<li class='admin-tool'><%= link_to "Activate meeting" , path , method: :post, :class => "button small radius" %></li>
 		<% end %>
+		<% url = '/meetings/' + @meeting.id.to_s + '/stats' %>
+		<li class='admin-tool'><%= link_to "Meeting Stats" , url, :class => "button small radius" %></li>
+		</ul>
 	</div>
 <% end %>
 </div>

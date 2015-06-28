@@ -5,7 +5,8 @@ class Meeting < ActiveRecord::Base
   def dates
   	date = Date.today
   	dates = []
-  	21.times do 
+    dates << date
+  	20.times do 
 	  	date = date.advance(:days => 1)
 	  	dates << date
   	end
