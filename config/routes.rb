@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   post 'meetings/:id/activate' => 'meetings#activate'
   post 'meetings/:id/deactivate' => 'meetings#deactivate'
+  get 'meetings/:id/stats' => 'meetings#stats'
+  get 'users/:id/stats' => 'users#stats'
   resources :users , only: [:index,:show]
   resources :relationships, only: [:create, :destroy]
   resources :meetings

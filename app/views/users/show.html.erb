@@ -1,3 +1,10 @@
+<% provide(:title , @user.name) %>
+<div class="large-6 small-12 large-centered small-centered columns center-text">
 <h2><%= @user.name %></h2>
 <%= mail_to @user.email %>
 <p><%= @user.phone_number%></p>
+<h3>Meetings I attended:</h3>
+<ul>
+<%= render @user.meetings %>
+</ul>
+</div>

@@ -1,0 +1,43 @@
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+    <ul class="title-area">
+      <li class="name">
+      <h1><%= link_to "THS DECA" , root_path %></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+  <% if user_signed_in? %>
+
+    <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class=""><%= link_to "View Users" , users_path %></li>
+      <li class=""><%= link_to "View Meetings" , meetings_path %></li>
+      <% if admin? %>
+      <li><%= link_to "Create Meeting" , new_meeting_path%></li>
+      <% end %>
+      <li class="has-dropdown">
+        <a><%= link_to current_user.name , current_user %></a>
+        <ul class="dropdown" class="drop_header">
+          <li class="center-text"><%= link_to "Profile" , current_user %></li>
+          <li class="center-text"><%= link_to "Settings" , edit_user_registration_path %> </li>
+          <li class="center-text" ><%= link_to "Logout" , destroy_user_session_path , method: "delete" %></li>
+        </ul>
+      </li>
+    </ul>
+    </section>
+
+  <% else %>
+
+    <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="center-text"><%= link_to "Sign In" , new_user_session_path %></li>
+      <li class="center-text"><%= link_to "Create Account" , new_user_registration_path %></li>
+    </ul>
+    </section>
+  <% end %>
+
+  </nav>
+</div>

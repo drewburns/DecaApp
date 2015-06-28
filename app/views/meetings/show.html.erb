@@ -1,8 +1,14 @@
-<h3><%= @meeting.title + " - " + @meeting.date_for.to_formatted_s(:long_ordinal) %> </h3>
+<% provide(:title , @meeting.title) %>
+<div class="large-6 small-12 large-centered small-centered columns">
+<h3 class="center-text"><%= @meeting.title + " - " + @meeting.date_for.to_formatted_s(:long_ordinal) %> </h3>
 
-<p><%= @meeting.description %> </p>
-<p>Attendance: <%= @meeting.users.count %></p>
-<p>Meeting is active: <%= @meeting.active %></p>
+<p class="center-text"><%= @meeting.description %> </p>
+<p class="center-text">Attendance: <%= @meeting.users.count %></p>
+  <% if @meeting.active == true %>
+		<p class="center-text green">Meeting is active</p>
+	<% else %>
+		<p class="center-text red">Meeting is not active</p>
+	<% end %>
 
 <% if user_signed_in? and @already_signed_in == false and @meeting.active == true%>
 	<%= form_for(@relationship) do |f| %>
@@ -17,13 +23,27 @@
 	<% end %>
 <% end %>
 
-<% if admin? %>
-	<h3>Admin tools:</h3>
-	<% if @meeting.active == true %>
-		<% path = '/meetings/' + @meeting.id.to_s + '/deactivate' %>
-		<%= link_to "Deactivate meeting" , path, method: :post %>
-	<% else %>
-		<% path = '/meetings/' + @meeting.id.to_s + '/activate' %>
-		<%= link_to "Activate meeting" , path , method: :post %>
+	<h3 class="center-text" >People at this meeting:</h3>
+	<div class="center-text">
+<% @meeting.users.each do |user| %>
+	<%= link_to user.name , user_path(user)%>
+	<% if admin? %>
+	<% relationship = find_relationship(user.id,@meeting.id) %>
+		- <%= link_to 'Was not there', relationship,  method: :delete, data: { confirm: 'Are you sure?' } %>
 	<% end %>
 <% end %>
+	</div>
+
+<% if admin? %>
+	<h3 class="center-text">Admin tools:</h3>
+	<div class="center-text">
+		<% if @meeting.active == true %>
+			<% path = '/meetings/' + @meeting.id.to_s + '/deactivate' %>
+			<%= link_to "Deactivate meeting" , path, method: :post %>
+		<% else %>
+			<% path = '/meetings/' + @meeting.id.to_s + '/activate' %>
+			<%= link_to "Activate meeting" , path , method: :post %>
+		<% end %>
+	</div>
+<% end %>
+</div>

@@ -1,0 +1,13 @@
+<% provide(:title, @user.name + " - Stats") %>
+<table>
+ 	<h3><%= @user.name %></h3>
+ 	<th>Meeting</th>
+ 	<th>Attendend?</th>
+	<tr>
+		<% @meetings_hash.each do |meeting,value| %>
+			<td><%= meeting %></td>
+			<td><%= "X" if value == 1 %></td>
+		<% end %>
+	</tr>
+
+</table>

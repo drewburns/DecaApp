@@ -1,2 +1,25 @@
-<h1>Users</h1>
+<% provide(:title , "Users") %>
+
+
+<div class="large-4 small-12 large-centered small-centered columns">
+<h1 class="center-text">Users</h1>
+<% if admin? %>
+	<button class='button tiny email-button' data-clipboard-target='fe_text' data-clipboard-text=<%= @email_list %> id='d_clip_button' title='Click me to copy to clipboard.'>
+	  <b>Copy Email Addresses</b>
+	</button>
+
+	  <script>
+	  $(document).ready(function() {
+	    var clip = new ZeroClipboard($("#d_clip_button"))
+	  });
+
+	  $("#clear-test").on("click", function(){
+	    $("#fe_text").val("Copy me!");
+	    $("#testarea").val("");
+	  });
+		</script>
+<% end %>
+<ul>
 <%= render @users %>
+</ul>
+</div>

@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   has_many :meetings , :through  => :relationships
   validates :name,  presence: true, length: { maximum: 50 }
   validates :sign_up_password, format: { with: /thsdeca92541/}
+  validates :phone_number, presence: true
 
 end

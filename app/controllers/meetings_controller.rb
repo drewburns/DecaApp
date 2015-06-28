@@ -1,9 +1,11 @@
 class MeetingsController < ApplicationController
+	include MeetingsHelper
 	before_action :authenticate_user!
 	before_action :admin_only! , except: [:index, :show]
 
 	def index
-		@meetings = Meeting.all.sort_by {|meeting| meeting.date_for}
+		@meetings = Meeting.where("date_for > ?", Date.yesterday).sort_by {|meeting| meeting.date_for}
+		@past_meetings = Meeting.where("date_for < ?", Date.today).sort_by {|meeting| meeting.date_for}
 	end
 
 	def show
@@ -62,6 +64,12 @@ class MeetingsController < ApplicationController
 		@meeting.active = false
 		@meeting.save
 		redirect_to meeting_path(@meeting)
+	end
+
+	def stats
+		@meeting = Meeting.find(params[:id])
+		@users_hash = get_attendance(@meeting)
+		@users_hash.first
 	end
 
 	private

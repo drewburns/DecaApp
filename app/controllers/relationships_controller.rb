@@ -14,6 +14,6 @@ class RelationshipsController < ApplicationController
 	def destroy
 		@relationship = Relationship.find(params[:id])
 		@relationship.destroy
-		redirect(:back)
+		redirect_to(:back)
 	end
 end

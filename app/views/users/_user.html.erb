@@ -1,4 +1,4 @@
-<li>
+<li class="center-text user">
 	<%= link_to user.name , user_path(user) %>
 	<% if admin? %>
 	<%= link_to "-  Delete user" , user , method: :delete, data: { confirm: "Are you sure" } %>

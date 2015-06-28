@@ -6,4 +6,13 @@ module ApplicationHelper
 			false
 		end
 	end
+
+	def give_title(title)
+		site = "THS DECA"
+		if title.empty?
+			site
+		else
+			"#{title} | #{site}"
+		end
+	end
 end

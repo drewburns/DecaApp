@@ -15,3 +15,65 @@
  *= require foundation_and_overrides
 
  */
+ * {
+	font-family: 'Poppins', sans-serif;
+	 }
+
+h1 {
+	font-family: 'Poppins', sans-serif;
+}
+
+a {
+	font-family: 'Poppins', sans-serif;
+}
+
+#main-header {
+	font-size: 30px;
+	text-align: center;
+}
+
+.center-text{
+	text-align: center;
+}
+ul {
+	list-style-type: none;
+}
+
+.tab-title {
+	text-align: center;
+	width: 50%;
+}
+
+.red {
+	color:red;
+}
+.green {
+	color:green;
+}
+
+.notice {
+	width: 100%;
+	background-color: #68E516;
+	text-align: center;
+	color: black;
+	font-family: 'Raleway', sans-serif; 
+}
+
+.alert {
+	text-align: center;
+	color: white;
+	font-family: 'Raleway', sans-serif; 
+	width: 100%;
+  background-color:#FF3C25
+}
+.meeting {
+	border-bottom: 1px solid gray;
+}
+.user {
+	border-bottom: 1px solid gray;
+}
+
+.email-button {
+	margin-left: 30%;
+}
+

@@ -1,7 +1,8 @@
-<h2>Log in</h2>
+<% provide(:title , "Log In") %>
 
+<div class="large-6 small-12 large-centered small-centered columns">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
+  <h2 class="center-text">Log in</h2>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -23,5 +24,5 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>

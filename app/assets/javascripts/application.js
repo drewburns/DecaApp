@@ -15,5 +15,8 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
+//= require zeroclipboard
 
 $(function(){ $(document).foundation(); });
+
+

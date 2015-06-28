@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'zeroclipboard-rails'
+
 gem 'foundation-rails'
 #devise 
 gem 'devise'
