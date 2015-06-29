@@ -48,8 +48,9 @@ class MeetingsController < ApplicationController
 	end
 
 	def destroy
+		@meeting = Meeting.find(params[:id])
 		@meeting.destroy
-		redirect_to root_path
+		redirect_to root_path, :notice => "Meeting Deleted"
 	end
 
 	def activate
@@ -75,7 +76,7 @@ class MeetingsController < ApplicationController
 	private
 
 	def meeting_params
-    params.require(:meeting).permit(:title, :description , :date_for)
+    params.require(:meeting).permit(:title, :description , :date_for, :password)
   end
 
 end

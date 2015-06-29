@@ -50,6 +50,7 @@
 		<% end %>
 		<% url = '/meetings/' + @meeting.id.to_s + '/stats' %>
 		<li class='admin-tool'><%= link_to "Meeting Stats" , url, :class => "button small radius" %></li>
+		<li class='admin-tool'><%= link_to "Delete Meeting" , @meeting, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button small radius" %></li>
 		</ul>
 	</div>
 <% end %>

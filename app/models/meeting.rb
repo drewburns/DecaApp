@@ -3,7 +3,7 @@ class Meeting < ActiveRecord::Base
   has_many :users , :through  => :relationships
 
   def dates
-  	date = Date.today
+  	date = Date.yesterday
   	dates = []
     dates << date
   	20.times do 
