@@ -4,7 +4,7 @@ class MeetingsController < ApplicationController
 	before_action :admin_only! , except: [:index, :show]
 
 	def index
-		@meetings = Meeting.where("date_for > ?", Date.yesterday).sort_by {|meeting| meeting.date_for}
+		@meetings = Meeting.where("date_for >= ?", Date.today).sort_by {|meeting| meeting.date_for}
 		@past_meetings = Meeting.where("date_for < ?", Date.today).sort_by {|meeting| meeting.date_for}
 	end
 
