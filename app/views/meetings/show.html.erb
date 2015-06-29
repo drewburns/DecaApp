@@ -18,7 +18,7 @@
 	  </div>
 
 		<div class="actions">
-	    <%= f.submit "Sign up" %>
+	    <%= f.submit "Sign in to meeting" , :class => 'button tiny radius large-centered small-centered columns' %>
 	  </div>
 	<% end %>
 <% end %>
@@ -40,18 +40,16 @@
 <% if admin? %>
 	<h3 class="center-text">Admin tools:</h3>
 	<div class="center-text">
-		<ul>
 		<% if @meeting.active == true %>
 			<% path = '/meetings/' + @meeting.id.to_s + '/deactivate' %>
-			<li class='admin-tool'><%= link_to "Deactivate meeting" , path, method: :post, :class => "button small radius" %></li>
+			<%= link_to "Deactivate meeting" , path, method: :post, :class => "button small radius" %>
 		<% else %>
 			<% path = '/meetings/' + @meeting.id.to_s + '/activate' %>
-			<li class='admin-tool'><%= link_to "Activate meeting" , path , method: :post, :class => "button small radius" %></li>
+			<%= link_to "Activate meeting" , path , method: :post, :class => "button small radius" %>
 		<% end %>
 		<% url = '/meetings/' + @meeting.id.to_s + '/stats' %>
-		<li class='admin-tool'><%= link_to "Meeting Stats" , url, :class => "button small radius" %></li>
-		<li class='admin-tool'><%= link_to "Delete Meeting" , @meeting, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button small radius" %></li>
-		</ul>
+		<%= link_to "Meeting Stats" , url, :class => "button small radius" %>
+		<%= link_to "Delete Meeting" , @meeting, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button small radius" %>
 	</div>
 <% end %>
 </div>

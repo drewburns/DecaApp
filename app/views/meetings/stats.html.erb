@@ -1,10 +1,10 @@
 <% provide(:title, @meeting.title + " - Stats") %>
-<table>
+<table class="small-8 large-6 large-centered small-centered columns">
  	<h3><%= @meeting.title %></h3>
  	<th>Name</th>
  	<th>Attendend?</th>
+ 	<% @users_hash.each do |name,value| %>
 	<tr>
-		<% @users_hash.each do |name,value| %>
 			<td><%= name %></td>
 			<td><%= "X" if value == 1 %></td>
 		<% end %>
