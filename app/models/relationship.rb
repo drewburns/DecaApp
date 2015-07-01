@@ -1,4 +1,4 @@
 class Relationship < ActiveRecord::Base
-	belongs_to :meeting, dependent: :destroy
-	belongs_to :user , dependent: :destroy
+	belongs_to :meeting
+	belongs_to :user 
 end
