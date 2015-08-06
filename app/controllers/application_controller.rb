@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   def home
     redirect_to meetings_path if user_signed_in?
   end
+  def key
+  end
 
   protected
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'meetings/:id/deactivate' => 'meetings#deactivate'
   get 'meetings/:id/stats' => 'meetings#stats'
   get 'users/:id/stats' => 'users#stats'
+  get 'loaderio-6f15deea49237104ad837d5abf529ebb/' => 'application#key'
   resources :users , only: [:index,:show]
   resources :relationships, only: [:create, :destroy]
   resources :meetings
